@@ -1,0 +1,29 @@
+{
+  "carts": [
+    {
+      "id": 2,
+      "name": "Orange",
+      "price": 30
+    },
+    {
+      "name": "Papaya",
+      "price": 20,
+      "id": 3
+    },
+    {
+      "name": "Papaya",
+      "price": 20,
+      "id": 4
+    },
+    {
+      "name": "Papaya",
+      "price": 20,
+      "id": 5
+    },
+    {
+      "name": "Papaya",
+      "price": 20,
+      "id": 6
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { addCarts, deleteCarts, getCarts } from "../../redux/action";
+
 const Home = () => {
   const fetchdata = () => {
     fetch("http://localhost:8000/carts")
@@ -62,6 +65,10 @@ const Home = () => {
       });
   };
 
+  const dispatch = useDispatch();
+  const carts = useSelector((state: any) => state.cartsReducer);
+  console.log(carts);
+
   return (
     <>
       <h3>Start json server with:</h3>
@@ -74,6 +81,24 @@ const Home = () => {
       <button onClick={() => fetchdata()}>Fetch</button>
       <button onClick={() => postdata()}>Post</button>
       <button onClick={() => deletedata("1")}>Delete</button>
+
+      <hr />
+      <h3>Sample Redux</h3>
+      <button onClick={() => dispatch(getCarts())}>reduxget</button>
+      <button
+        onClick={() =>
+          dispatch(
+            addCarts({
+              id: 2,
+              name: "Orange",
+              price: 30,
+            })
+          )
+        }
+      >
+        reduxadd
+      </button>
+      <button onClick={() => dispatch(deleteCarts(1))}>reduxdelete</button>
     </>
   );
 };

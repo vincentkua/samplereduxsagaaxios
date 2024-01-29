@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addCarts, deleteCarts, getCarts } from "../../redux/action";
+import { addCarts, deleteCarts, getCarts, sagaDelete, sagaGet, sagaPost } from "../../redux/action";
 
 const Home = () => {
   const fetchdata = () => {
@@ -99,6 +99,23 @@ const Home = () => {
         reduxadd
       </button>
       <button onClick={() => dispatch(deleteCarts(1))}>reduxdelete</button>
+
+      <hr />
+      <h3>Sample Saga </h3>
+      <button onClick={()=>dispatch(sagaGet())}>sagaGet</button>
+      <button
+        onClick={() =>
+          dispatch(
+            sagaPost({
+              name: "Orange",
+              price: 30,
+            })
+          )
+        }
+      >
+        sagaPost
+      </button>
+      <button onClick={() => dispatch(sagaDelete(2))}>sagaDelete</button>
     </>
   );
 };

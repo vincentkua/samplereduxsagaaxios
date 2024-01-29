@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ADD_CARTS, DELETE_CARTS, GET_CARTS } from "./constant";
+import { ADD_CARTS, DELETE_CARTS, GET_CARTS, SET_CARTS } from "./constant";
 const cartsReducer = (data = [{
     id: 1,
     name: "Orange",
@@ -17,6 +17,9 @@ const cartsReducer = (data = [{
         console.log("reducer - delete carts called");
         const newcart = data.filter(x=> x.id!==action.data)
         return newcart;
+    case SET_CARTS:
+        console.log("reducer - SET carts called");
+        return action.data;
     default:
       return data;
   }

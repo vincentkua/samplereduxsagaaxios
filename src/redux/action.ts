@@ -1,4 +1,4 @@
-import { ADD_CARTS, DELETE_CARTS, GET_CARTS, SAGA_DELETE, SAGA_GET, SAGA_POST } from "./constant"
+import { ADD_CARTS, AXIOS_DELETE, AXIOS_GET, AXIOS_POST, DELETE_CARTS, GET_CARTS, SAGA_DELETE, SAGA_GET, SAGA_POST } from "./constant"
 export const getCarts = () => {
     console.log("action - get carts called")
     return {
@@ -36,6 +36,26 @@ export const sagaDelete = (id: number) => {
     console.log("action - sagaDelete called")
     return {
         type : SAGA_DELETE,
+        id: id
+    }
+}
+export const axiosGet = () => {
+    console.log("action - axios get called")
+    return {
+        type : AXIOS_GET
+    }
+}
+export const axiosPost= (data:any) => {
+    console.log("action - axios post called")
+    return {
+        type : AXIOS_POST,
+        data : data
+    }
+}
+export const axiosDelete = (id: number) => {
+    console.log("action - axios delete called")
+    return {
+        type : AXIOS_DELETE,
         id: id
     }
 }

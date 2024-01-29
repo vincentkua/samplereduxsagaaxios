@@ -1,5 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addCarts, deleteCarts, getCarts, sagaDelete, sagaGet, sagaPost } from "../../redux/action";
+import {
+  addCarts,
+  axiosDelete,
+  axiosGet,
+  axiosPost,
+  deleteCarts,
+  getCarts,
+  sagaDelete,
+  sagaGet,
+  sagaPost,
+} from "../../redux/action";
 
 const Home = () => {
   const fetchdata = () => {
@@ -69,6 +79,12 @@ const Home = () => {
   const carts = useSelector((state: any) => state.cartsReducer);
   console.log(carts);
 
+  const samplenewdata = {
+    id: 2,
+    name: "Orange",
+    price: 30,
+  };
+
   return (
     <>
       <h3>Start json server with:</h3>
@@ -85,37 +101,26 @@ const Home = () => {
       <hr />
       <h3>Sample Redux</h3>
       <button onClick={() => dispatch(getCarts())}>reduxget</button>
-      <button
-        onClick={() =>
-          dispatch(
-            addCarts({
-              id: 2,
-              name: "Orange",
-              price: 30,
-            })
-          )
-        }
-      >
+      <button onClick={() => dispatch(addCarts(samplenewdata))}>
         reduxadd
       </button>
       <button onClick={() => dispatch(deleteCarts(1))}>reduxdelete</button>
 
       <hr />
       <h3>Sample Saga </h3>
-      <button onClick={()=>dispatch(sagaGet())}>sagaGet</button>
-      <button
-        onClick={() =>
-          dispatch(
-            sagaPost({
-              name: "Orange",
-              price: 30,
-            })
-          )
-        }
-      >
+      <button onClick={() => dispatch(sagaGet())}>sagaGet</button>
+      <button onClick={() => dispatch(sagaPost(samplenewdata))}>
         sagaPost
       </button>
       <button onClick={() => dispatch(sagaDelete(2))}>sagaDelete</button>
+
+      <hr />
+      <h3>Sample Axios</h3>
+      <button onClick={() => dispatch(axiosGet())}>axiosGet</button>
+      <button onClick={() => dispatch(axiosPost(samplenewdata))}>
+        axiosPost
+      </button>
+      <button onClick={() => dispatch(axiosDelete(2))}>axiosaDelete</button>
     </>
   );
 };

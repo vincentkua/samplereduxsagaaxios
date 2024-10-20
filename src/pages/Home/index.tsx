@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addCarts, deleteCarts, getCarts } from "../../redux/action";
+import { RootReducerState } from "../../redux/reducer";
 
 const Home = () => {
   const fetchdata = () => {
@@ -66,7 +67,7 @@ const Home = () => {
   };
 
   const dispatch = useDispatch();
-  const carts = useSelector((state: any) => state.cartsReducer);
+  const carts = useSelector((state: RootReducerState) => state.cartsReducer);
   console.log(carts);
 
   return (

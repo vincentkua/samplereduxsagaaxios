@@ -25,3 +25,6 @@ const rootReducer = combineReducers({
     cartsReducer,
 });
 export default rootReducer;
+
+// Create RootState type based on the rootReducer
+export type RootReducerState = ReturnType<typeof rootReducer>;
